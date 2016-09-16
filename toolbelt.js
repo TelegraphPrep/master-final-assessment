@@ -1,5 +1,3 @@
-
-
 var toolbelt = {};
 
 //1. add a method to the toolbelt object (defined above for you) that takes in an array, and passes each element and index of the array into a callback function.
@@ -13,7 +11,8 @@ toolbelt.forEach = function (array, callback) {
 /*
 Questions:
 a) What does this function return? (a string, an object, a boolean, etc.)
-
+  
+  This function doesen't return annything this function just loops thought the array and passes thr value and index to the callback
 
 -- if it returns an array, how long will that array be? (either an exact number if it's the same each time, or a range if it's not)
 
@@ -26,9 +25,9 @@ b) What does the callback to this function return? (a string, an object, a boole
 
 toolbelt.map = function (array, callback) {
   var results = [];
-  for (var i = 0; i < array.length; i++) {
-    results.push(callback(array[i], i));
-  }
+  toolbelt.forEach(array, function(value, index){
+    results.push(callback(value, index));
+  })
   return results;
 };
 
@@ -49,11 +48,11 @@ b) What does the callback to this function return? (a string, an object, a boole
 
 toolbelt.filter = function (array, callback) {
   var results = [];
-  for (var i = 0; i < array.length; i++) {
-    if(callback(array[i], i)) {
-      results.push(array[i]);
+  toolbelt.forEach(array, function(value, index){
+    if(callback(value, index)){
+      results.push(value);
     }
-  }
+  })
   return results;
 };
 
@@ -67,16 +66,17 @@ a) What does this function return? (a string, an object, a boolean, etc.)
 
 
 b) What does the callback to this function return? (a string, an object, a boolean, etc.)
-*/
+*/ 
 
 
+//4. add a method to the toolbelt object that takes in an array and returns an accumulation of the elements in the array. The method takes in three parameters: the array, the callback, and whatever you want to initialize the accumulator at. The function should loop through the array, and for each element, redefine the accumulator to whatever the callback returns. You should pass into the callback the accumulator itself and the element. The function should return the accumulator.
 
-
-4. add a method to the toolbelt object that takes in an array and returns an accumulation of the elements in the array. The method takes in three parameters: the array, the callback, and whatever you want to initialize the accumulator at. The function should loop through the array, and for each element, redefine the accumulator to whatever the callback returns. You should pass into the callback the accumulator itself and the element. The function should return the accumulator.
-
-
-
-
+toolbelt.reduce = function (array, callback, accumulator) {
+  toolbelt.forEach(array, function(value){
+    accumulator = callback(accumulator, value);
+  })
+  return accumulator;
+};
 
 /*
 Questions:
