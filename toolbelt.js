@@ -1,11 +1,16 @@
-/*
+
 
 var toolbelt = {};
 
-1. add a method to the toolbelt object (defined above for you) that takes in an array, and passes each element and index of the array into a callback function.
+//1. add a method to the toolbelt object (defined above for you) that takes in an array, and passes each element and index of the array into a callback function.
 
+toolbelt.forEach = function (array, callback) {
+  for (var i = 0; i < array.length; i++) {
+    callback(array[i], i);
+  }
+};
 
-
+/*
 Questions:
 a) What does this function return? (a string, an object, a boolean, etc.)
 
@@ -14,14 +19,21 @@ a) What does this function return? (a string, an object, a boolean, etc.)
 
 
 b) What does the callback to this function return? (a string, an object, a boolean, etc.)
+*/
 
 
+//2. add a method to the toolbelt object that takes in an array, passes each element and index of the array into a callback function, and returns an array with the results of each call to the callback function.
 
-2. add a method to the toolbelt object that takes in an array, passes each element and index of the array into a callback function, and returns an array with the results of each call to the callback function.
+toolbelt.map = function (array, callback) {
+  var results = [];
+  for (var i = 0; i < array.length; i++) {
+    results.push(callback(array[i], i));
+  }
+  return results;
+};
 
 
-
-
+/*
 Questions:
 a) What does this function return? (a string, an object, a boolean, etc.)
 
@@ -30,14 +42,23 @@ a) What does this function return? (a string, an object, a boolean, etc.)
 
 
 b) What does the callback to this function return? (a string, an object, a boolean, etc.)
+*/
 
 
+//3. add a method to the toolbelt object that takes in an array, and passes each element and index of the array into a callback function. Return an array of just the elements for which the callback returned true.
 
-3. add a method to the toolbelt object that takes in an array, and passes each element and index of the array into a callback function. Return an array of just the elements for which the callback returned true.
+toolbelt.filter = function (array, callback) {
+  var results = [];
+  for (var i = 0; i < array.length; i++) {
+    if(callback(array[i], i)) {
+      results.push(array[i]);
+    }
+  }
+  return results;
+};
 
 
-
-
+/*
 Questions:
 a) What does this function return? (a string, an object, a boolean, etc.)
 
@@ -46,6 +67,8 @@ a) What does this function return? (a string, an object, a boolean, etc.)
 
 
 b) What does the callback to this function return? (a string, an object, a boolean, etc.)
+*/
+
 
 
 
@@ -54,6 +77,8 @@ b) What does the callback to this function return? (a string, an object, a boole
 
 
 
+
+/*
 Questions:
 a) What does this function return? (a string, an object, a boolean, etc.)
 
@@ -62,7 +87,4 @@ a) What does this function return? (a string, an object, a boolean, etc.)
 
 
 b) What does the callback to this function return? (a string, an object, a boolean, etc.)
-
-
-
 */
